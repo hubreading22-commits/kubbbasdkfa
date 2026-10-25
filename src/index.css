@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-coral: #FF4B55;
+  --color-brand-coral-deep: #E03A45;
+  --color-brand-coral-pressed: #C42F3A;
+  --color-brand-yellow: #EFC94C;
+  --color-brand-blue: #1E4FD8;
+  --color-ink: #0B0B0C;
+  --color-canvas: #FFFFFF;
+  --color-card: #F4F5F7;
+  --color-card-border: #E6E8EC;
+  --color-text-muted: #5B6168;
+
+  --color-status-expired-text: #B3121F;
+  --color-status-expired-bg: #FDECEE;
+  --color-status-due-text: #A85A00;
+  --color-status-due-bg: #FFF4D6;
+  --color-status-valid-text: #0F7B3E;
+  --color-status-valid-bg: #E4F7EC;
+
+  --radius-pill: 999px;
+  --radius-card: 22px;
+  --radius-banner: 28px;
+  --font-sans: 'Plus Jakarta Sans', 'Noto Sans Malayalam', 'Anek Malayalam', sans-serif;
+}
+
+:root {
+  /* Brand Tokens */
+  --brand-coral: #FF4B55;
+  --brand-coral-deep: #E03A45;
+  --brand-coral-pressed: #C42F3A;
+  --brand-yellow: #EFC94C;
+  --brand-blue: #1E4FD8;
+  --ink: #0B0B0C;
+  --white: #FFFFFF;
+
+  /* Surface Tokens */
+  --canvas: #FFFFFF;
+  --card: #F4F5F7;
+  --card-border: #E6E8EC;
+  --text-muted: #5B6168;
+
+  /* Status Tokens (Always paired with Icon + Text; Expired crimson is distinct from Brand Coral) */
+  --status-expired-text: #B3121F;
+  --status-expired-bg: #FDECEE;
+  --status-due-text: #A85A00;
+  --status-due-bg: #FFF4D6;
+  --status-valid-text: #0F7B3E;
+  --status-valid-bg: #E4F7EC;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Noto Sans Malayalam', 'Anek Malayalam', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  background-color: var(--canvas);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* Heavy condensed grotesque ONLY for English hero display headlines */
+.font-display-en {
+  font-family: 'Oswald', 'Bebas Neue', 'Plus Jakarta Sans', sans-serif;
+  text-transform: uppercase;
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+}
+
+/* Malayalam display & body — NEVER uses condensed Latin font */
+.font-ml {
+  font-family: 'Noto Sans Malayalam', 'Anek Malayalam', 'Plus Jakarta Sans', sans-serif;
+  line-height: 1.68;
+}
+
+.font-ml-display {
+  font-family: 'Noto Sans Malayalam', 'Anek Malayalam', sans-serif;
+  font-weight: 800;
+  line-height: 1.32;
+}
+
+/* Tabular figures for numbers, dates, and rupee amounts */
+.font-mono-tabular,
+.tabular-nums {
+  font-family: 'JetBrains Mono', 'Noto Sans Malayalam', sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Subtle topographic line texture on coral surfaces at 10% opacity */
+.coral-topo-surface {
+  background-color: var(--brand-coral);
+  background-image: url("data:image/svg+xml,%3Csvg width='160' height='320' viewBox='0 0 160 320' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18 0 C 38 70, 2 150, 22 230 C 38 280, 12 300, 18 320 M54 0 C 34 80, 74 160, 52 240 C 36 285, 60 305, 54 320 M96 0 C 118 65, 78 145, 98 225 C 114 275, 88 300, 96 320 M138 0 C 118 75, 152 155, 134 235 C 120 280, 144 305, 138 320' stroke='rgba(255,255,255,0.11)' stroke-width='1.35' fill='none'/%3E%3C/svg%3E");
+}
+
+/* Gentle spring micro-interaction on buttons and cards */
+.spring-interactive {
+  transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.spring-interactive:active {
+  transform: scale(0.97);
+}
+
+/* Mascot gentle idle bounce */
+@keyframes mascotFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.mascot-bounce {
+  animation: mascotFloat 3.4s ease-in-out infinite;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .mascot-bounce {
+    animation: none !important;
+  }
+  .spring-interactive,
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 3px solid var(--brand-blue);
+  outline-offset: 2px;
+}

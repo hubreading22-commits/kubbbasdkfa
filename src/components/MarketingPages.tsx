@@ -247,7 +247,7 @@ export const SecondaryMarketingPages: React.FC<SecondaryPageProps> = ({
                   : 'Triggers 7-day, 1-day, and weekly overdue reminders until marked as renewed.'}
               </p>
             </div>
-            <div className="rounded-2xl border border-[#FDE68A] bg-[#FFFBEB] p-4 text-[#D97706]">
+            <div className="rounded-2xl border border-[#FDE68A] bg-[#FFFBEB] p-4 text-[#EFC94C]">
               <div className="flex items-center gap-2 font-bold">
                 <Clock className="h-5 w-5 shrink-0" />
                 <span>

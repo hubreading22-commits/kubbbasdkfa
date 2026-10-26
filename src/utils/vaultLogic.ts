@@ -11,7 +11,6 @@ export interface ExpiryEvaluation {
 export interface TenantActor {
   tenantId: string;
   userId: string;
-  role: 'OWNER' | 'EDITOR' | 'VIEWER';
 }
 
 export interface TenantDocumentRecord {
@@ -159,7 +158,7 @@ export function canAccessTenantDocument(
   if (doc.visibility === 'SHARED') {
     return true;
   }
-  return actor.role === 'OWNER' || actor.userId === doc.createdByUserId;
+  return actor.userId === doc.createdByUserId;
 }
 
 /**

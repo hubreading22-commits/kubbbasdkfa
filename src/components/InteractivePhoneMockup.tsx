@@ -397,7 +397,7 @@ export const InteractivePhoneMockup: React.FC<InteractivePhoneMockupProps> = ({
                     status.state === 'CRITICAL'
                       ? 'bg-[#FEF2F2] text-[#DC2626] border-[#FECACA]'
                       : status.state === 'WARNING'
-                      ? 'bg-[#FFFBEB] text-[#D97706] border-[#FDE68A]'
+                      ? 'bg-[#FFFBEB] text-[#EFC94C] border-[#FDE68A]'
                       : 'bg-[#DCFCE7] text-[#16A34A] border-[#BBF7D0]';
 
                   const StatusIcon =

@@ -320,11 +320,11 @@ export const PixelKey3D: React.FC<{ className?: string }> = ({ className = '' })
           <rect x="50" y="88" width="112" height="76" fill="#EFC94C" />
 
           {/* Voxel Grid Lines for Authentic Pixel-3D Look */}
-          <line x1="78" y1="80" x2="78" y2="172" stroke="#D97706" strokeWidth="2" strokeOpacity="0.45" />
-          <line x1="106" y1="80" x2="106" y2="172" stroke="#D97706" strokeWidth="2" strokeOpacity="0.45" />
-          <line x1="134" y1="80" x2="134" y2="172" stroke="#D97706" strokeWidth="2" strokeOpacity="0.45" />
-          <line x1="42" y1="108" x2="170" y2="108" stroke="#D97706" strokeWidth="2" strokeOpacity="0.45" />
-          <line x1="42" y1="136" x2="170" y2="136" stroke="#D97706" strokeWidth="2" strokeOpacity="0.45" />
+          <line x1="78" y1="80" x2="78" y2="172" stroke="#EFC94C" strokeWidth="2" strokeOpacity="0.45" />
+          <line x1="106" y1="80" x2="106" y2="172" stroke="#EFC94C" strokeWidth="2" strokeOpacity="0.45" />
+          <line x1="134" y1="80" x2="134" y2="172" stroke="#EFC94C" strokeWidth="2" strokeOpacity="0.45" />
+          <line x1="42" y1="108" x2="170" y2="108" stroke="#EFC94C" strokeWidth="2" strokeOpacity="0.45" />
+          <line x1="42" y1="136" x2="170" y2="136" stroke="#EFC94C" strokeWidth="2" strokeOpacity="0.45" />
 
           {/* Center Pixel Keyhole Emblem (Pink/Coral accent like the #1 on the reference trophy) */}
           <rect x="94" y="106" width="24" height="22" fill="#FF4B55" stroke="#0B0B0C" strokeWidth="2.5" />

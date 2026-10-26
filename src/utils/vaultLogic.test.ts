@@ -8,6 +8,7 @@ import {
   canAccessTenantDocument,
   validateWaitlistInput,
 } from './vaultLogic';
+import { formatHumanDate, formatINR } from '../types/vault';
 
 test('maskAadhaarNumber always masks first 8 digits and preserves only last 4', () => {
   assert.equal(maskAadhaarNumber('7482 9103 4821'), 'XXXX-XXXX-4821');
@@ -65,35 +66,35 @@ test('canAccessTenantDocument strictly prevents cross-tenant reads and enforces 
     visibility: 'SHARED' as const,
   };
 
-  // Cross-tenant attempt by another household OWNER must ALWAYS fail
+  // Cross-tenant attempt must ALWAYS fail
   assert.equal(
     canAccessTenantDocument(
-      { tenantId: 'tenant-menon-family', userId: 'user-menon', role: 'OWNER' },
+      { tenantId: 'tenant-menon-family', userId: 'user-menon' },
       tenantADocShared
     ),
     false
   );
 
-  // Same-tenant VIEWER can read SHARED doc, but NOT someone else's PRIVATE doc
+  // Same-tenant member can read SHARED doc, but NOT someone else's PRIVATE doc
   assert.equal(
     canAccessTenantDocument(
-      { tenantId: 'tenant-nair-family', userId: 'user-son-dubai', role: 'VIEWER' },
+      { tenantId: 'tenant-nair-family', userId: 'user-son-dubai' },
       tenantADocShared
     ),
     true
   );
   assert.equal(
     canAccessTenantDocument(
-      { tenantId: 'tenant-nair-family', userId: 'user-son-dubai', role: 'VIEWER' },
+      { tenantId: 'tenant-nair-family', userId: 'user-son-dubai' },
       tenantADocPrivate
     ),
     false
   );
 
-  // Same-tenant OWNER or creator can read PRIVATE doc
+  // Creator can read PRIVATE doc
   assert.equal(
     canAccessTenantDocument(
-      { tenantId: 'tenant-nair-family', userId: 'user-owner', role: 'OWNER' },
+      { tenantId: 'tenant-nair-family', userId: 'user-appachan' },
       tenantADocPrivate
     ),
     true
@@ -130,4 +131,11 @@ test('validateWaitlistInput rejects invalid phones/names and accepts Kerala & Gu
     }).valid,
     true
   );
+});
+
+test('formatHumanDate and formatINR format localized dates and Indian Rupee digit grouping', () => {
+  assert.equal(formatINR(850), '₹850');
+  assert.equal(formatINR(125000), '₹1,25,000');
+  const humanEn = formatHumanDate('2025-03-14', 'en');
+  assert.ok(humanEn.includes('2025') && humanEn.includes('Mar'));
 });
